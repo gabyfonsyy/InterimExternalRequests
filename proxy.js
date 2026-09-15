@@ -2,7 +2,7 @@
 // It only needs to handle the page load — form submissions (google.script.run)
 // and the Jira webhook talk to Google's servers directly, bypassing this proxy entirely.
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL;
 
   if (!APPS_SCRIPT_URL) {
@@ -21,4 +21,4 @@ export default async function handler(req, res) {
   } catch (err) {
     res.status(502).send('Could not reach the request portal right now. Please try again shortly.');
   }
-}
+};
